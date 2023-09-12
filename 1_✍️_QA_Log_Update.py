@@ -1,5 +1,5 @@
 
-from msilib.schema import Icon
+
 from operator import index
 from os import write
 from re import T
