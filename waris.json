@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "waris-amini-project",
+  "private_key_id": "1288799f941b57cc4bfb249f12e2af05c84b29e7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDy8NKuj1pQie2A\nMfkT9LnXMEjkliwFe+S7dscwNP5fKA0d3orosR6/hy+wMtZdf9RYT3MiZILQiIEu\nkGFo2bgup+Kvc5yE5gU3wNuBVtcUywApWdwqCundaPdbdeWM4v18x4Qd+UoHkPRp\nPG8hK5AFrysa44zB5pAcDwN6/Eu0RoqnBJJeqXMbTO6IxzRGTFo9JWfnvSI2RpOi\nGHbMt0zSOq5WSPPw9vpPGsAZS/LzhBLBYoRAisKjs6ZlWMuRjlXd4t1XjBO6nyx0\nZucImGjm+jBoCVZW8tdK2nB0Vto/yWGa4AWEeJKG7voF4E5qM0F0bP99fjIlM4AL\nCfR8VtY/AgMBAAECggEASbg4Rk4r2sqv7jm72ollp134kJzdSOC6nQRDF2bNVbTC\nnjC8uDWfHgF4wB/9GqxClHWve11CsOLrSGT5miaPFGFPkWwkr9NY+/0i3tGqPJ4J\nM4MYIw3iv5Qtk2xoNuNehnHIrovKIhejgxeapVchwgfQrb0lJmW/jzQjGzvaAR7b\ncYfQB3oN36cT2OaN436+bhTC3LG5S0ZcwGXYhjdsdcAorSVZr3N1PxdiNbeF/as5\nv8GwMBpx7cJw/Pc9Cx8XaQbFoTUhMxcUbF2UcRybYuLdhI5O0hei97qGqCM8zQyI\nm8e8Sp806pVmsFlyybA2bRDtsJ7m/ZJoqGHOfUzIGQKBgQD8LUL84pSNVFwRACZ5\ndut7rZhGSm099OuuknMCXVSqlf1P/cchnrShFwJEAIXcPFoSI3ir0RP0uwBQeiUg\nAOliV8kklo2QwJtk7BXD6rMTbnTcNb8TzY7wPcqaLR8I8KU4MsxOeBizRwOzOyeq\n6bFwGc2zvzlqayOh7lf3ZK0b4wKBgQD2n7buVBxYq4XIlw2SRfDj9OihpAzCrugL\nPqZbXv+8mK8HfU9WPl50HbYYN0kcdEmWMr4KTprPFzR3GXNdRLgf8jQNBOAMrGN7\nSBT8Qgq1ugou4scHyxLrXx6ByTIDRwOmTn6VYaz5CVWnPNLIC8Bdayi9vLDJkwoi\n5M8LRt0i9QKBgAnYvpffRQurspibV+VARnui0KJV/6P+r0E2yLTb7hVnG+gGscLX\nTphHrLf5CUELPj0dE3YqCMxyjNWXn2F7h6Fmah06n7Z6PtcW/NaUkH9+vaNnmdlt\nGlq5HvMcNe0EcH8cRKv/tn8xk6xo7+iVjW8iIs0U92n3WwHUq6ymSrgfAoGAYfv2\nvB3i3T/YeWe6VqE/IfKN8pqxDzBatQ0BH1BRHucyszEQMl25PT0IufpNK+bvzaL/\naizsyNaZW7Ba63WACgE6uOl08tQS+kobPFYo1ybBIPusw+Xk8GrsPfhnzHGMe6i4\nFjWmeZNB2p4JyL0SgosutqOfQZcP8ekicYKIHXkCgYA2Un+WRD3qx8xIITR9xr1n\nhIq+sTOOELerpF9IUJ7w2XRnnktg5CiOSM51UosY0WeNwg6EhXINmQK5mENzP+Kn\nOonPHRK1x3SYCw2Nz56fXSVG3tgj/vus8JYIdfTQSedPk1pi2x/fPrszl5Z3rv2B\nl+JveJIDl4YcmLNLtETQnQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "python@waris-amini-project.iam.gserviceaccount.com",
+  "client_id": "102477041203318264002",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/python%40waris-amini-project.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
