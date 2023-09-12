@@ -100,8 +100,7 @@ st.write(Merge_datasets)
 
 
 
-
-
+gc = gspread.service_account(filename='waris.json')
 tab_name = 'QA_Log'
 sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
 
