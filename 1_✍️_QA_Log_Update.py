@@ -6,7 +6,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from io import BytesIO
-import xlsxwriter
 
 st.subheader('QA_LOg Sheet Update', divider='rainbow')
 
