@@ -70,7 +70,7 @@ if __name__ == '__main__':
 
 
 
-try:
+
 Tool_1['Tool_Name'] = "Tool 1"
 Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
@@ -80,10 +80,6 @@ Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','C
 Tool_6['Tool_Name'] = "Tool 1"
 Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-
-except Exception as e:
-    st.error("An error occurred while setting the tool name.")
-    st.write(e)
 
 Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6])
 st.subheader('Merge All datasets')
