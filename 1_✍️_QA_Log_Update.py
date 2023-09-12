@@ -1,5 +1,4 @@
 
-from heapq import merge
 from msilib.schema import Icon
 from operator import index
 from os import write
