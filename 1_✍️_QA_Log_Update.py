@@ -4,7 +4,6 @@ from operator import index
 from os import write
 import stat
 from tracemalloc import start
-from turtle import color
 import streamlit as st
 import pandas as pd
 import numpy as np
