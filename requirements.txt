@@ -1,1 +1,15 @@
-openpyxl
+heapq
+msilib
+operator
+re
+stat
+tracemalloc
+turtle
+streamlit
+pandas
+numpy
+gspread
+google-auth
+gspread-dataframe
+base64
+xlsxwriter
