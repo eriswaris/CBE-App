@@ -14,6 +14,7 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 import base64
 from io import BytesIO
 import xlsxwriter
+import openpyxl
 
 st.subheader('QA_LOg Sheet Update', divider='rainbow')
 
