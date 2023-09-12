@@ -1,12 +1,7 @@
-
-from heapq import merge
-from msilib.schema import Icon
 from operator import index
 from os import write
-from re import T
 import stat
 from tracemalloc import start
-from turtle import color
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -17,6 +12,8 @@ from gspread_dataframe import get_as_dataframe, set_with_dataframe
 import base64
 from io import BytesIO
 import xlsxwriter
+import openpyxl
+
 
 st.subheader('QA_LOg Sheet Update', divider='rainbow')
 
@@ -82,6 +79,7 @@ Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','C
 Tool_6['Tool_Name'] = "Tool 1"
 Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
+
 Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6])
 st.subheader('Merge All datasets')
 st.write(Merge_datasets)
@@ -102,8 +100,7 @@ st.write(Merge_datasets)
 
 
 
-
-gc = gspread.service_account(filename='C:\\Users\\WARIS AMINI\\Documents\\UNICEF_CBE\\waris.json')
+gc = gspread.service_account(filename='waris.json')
 tab_name = 'QA_Log'
 sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
 
