@@ -21,9 +21,10 @@ st.subheader('QA_LOg Sheet Update', divider='rainbow')
 Tool_1 = None
 Tool_4 = None
 Tool_6 = None
+Tool_9 = None
 
 def process_datasets(files):
-    global Tool_1, Tool_4, Tool_6
+    global Tool_1, Tool_4, Tool_6, Tool_9
 
     for file in files:
         file_name = file.name
@@ -35,7 +36,8 @@ def process_datasets(files):
             Tool_4 = pd.read_excel(file)
         elif dataset_name == 'Tool 6 Phase 2 School Community ParticipationRole':
             Tool_6 = pd.read_excel(file)
-            
+        elif dataset_name == 'Tool 9 Fomal School Checklist':
+            Tool_9 = pd.read_excel(file)    
         else:
             st.warning(f"Dataset '{dataset_name}' does not match the expected datasets. Please Upload the correct dataset",icon="⚠️")
 
@@ -63,6 +65,10 @@ def main():
     if Tool_6 is not None:
         st.subheader('Tool 6 Dataset')
         st.write(Tool_1)
+        
+    if Tool_9 is not None:
+        st.subheader('Tool 6 Dataset')
+        st.write(Tool_1)
 
 if __name__ == '__main__':
     main()
@@ -76,11 +82,15 @@ Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','C
 Tool_4['Tool_Name'] = "Tool 4"
 Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-Tool_6['Tool_Name'] = "Tool 1"
+Tool_6['Tool_Name'] = "Tool 6"
 Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
+Tool_9['Tool_Name'] = "Tool 9"
+Tool_9 = Tool_6[['KEY','Tool_Name','Province','District','Village','School_Name','EMIS_School_ID','Surveyor_Name','Surveyor_Id']]
 
-Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6])
+
+
+Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6,Tool9])
 st.subheader('Merge All datasets')
 st.write(Merge_datasets)
 
