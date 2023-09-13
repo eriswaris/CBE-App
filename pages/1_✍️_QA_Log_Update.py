@@ -74,48 +74,47 @@ if __name__ == '__main__':
     main()
 
 
-def update_qa_log():
+Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
 
-    global Tool_1, Tool_4, Tool_6, Tool_9
+Tool_1['Tool_Name'] = "Tool 1"
+Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
+Tool_4['Tool_Name'] = "Tool 4"
+Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Tool_1['Tool_Name'] = "Tool 1"
-    Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+Tool_6['Tool_Name'] = "Tool 6"
+Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Tool_4['Tool_Name'] = "Tool 4"
-    Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+Tool_9['Tool_Name'] = "Tool 9"
+Tool_9 = Tool_9[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Tool_6['Tool_Name'] = "Tool 6"
-    Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Tool_9['Tool_Name'] = "Tool 9"
-    Tool_9 = Tool_9[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
-    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6, Tool_9])
-    st.subheader('Merge All datasets')
-    st.write(Merge_datasets)
+Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6,Tool_9])
+st.subheader('Merge All datasets')
+st.write(Merge_datasets)
 
-    # Load data from Google sheet
-    sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
-    sheet_name = "QA_Log"
-    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+# Load data from Google sheet
+sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
+sheet_name = "QA_Log"
+url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
-    QA_log = pd.read_csv(url)
-    df_id = QA_log['KEY']
 
-    Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
-    st.subheader('Removing Duplicate KEY from the dataset')
-    st.write(Merge_datasets)
+QA_log = pd.read_csv(url)
+df_id = QA_log['KEY']
 
-    gc = gspread.service_account(filename='waris.json')
-    tab_name = 'QA_Log'
-    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
-if st.button('Start Processing the dataset'):
-    update_qa_log()
 
-    
-   if st.button('Update QA_Log'):
+Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
+st.subheader('Removing Duplicate KEY from the dataset')
+st.write(Merge_datasets)
+
+
+
+gc = gspread.service_account(filename='waris.json')
+tab_name = 'QA_Log'
+sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
+
+if st.button('Update QA_Log'):
  sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'},{'values': Merge_datasets.astype(str).values.tolist()})
 
  st.markdown(
