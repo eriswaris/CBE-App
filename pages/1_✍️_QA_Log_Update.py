@@ -67,7 +67,7 @@ def main():
         st.write(Tool_6)
         
     if Tool_9 is not None:
-        st.subheader('Tool 6 Dataset')
+        st.subheader('Tool 9 Dataset')
         st.write(Tool_9)
 
 if __name__ == '__main__':
@@ -86,7 +86,7 @@ Tool_6['Tool_Name'] = "Tool 6"
 Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
 Tool_9['Tool_Name'] = "Tool 9"
-Tool_9 = Tool_9[['KEY','Tool_Name','Province','District','Village','School_Name','EMIS_School_ID','Surveyor_Name','Surveyor_Id']]
+Tool_9 = Tool_9[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
 
 
 
