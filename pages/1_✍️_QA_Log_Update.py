@@ -111,7 +111,10 @@ def update_qa_log():
     gc = gspread.service_account(filename='waris.json')
     tab_name = 'QA_Log'
     sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
+if st.button('Start Processing the dataset'):
+    update_qa_log()
 
+    
     if st.button('Update QA_Log'):
         set_with_dataframe(sheet.worksheet(tab_name), Merge_datasets)
 
@@ -149,6 +152,3 @@ def update_qa_log():
             unsafe_allow_html=True
         )
 
-# Call the function when the button is clicked
-if st.button('Start Processing the dataset'):
-    update_qa_log()
