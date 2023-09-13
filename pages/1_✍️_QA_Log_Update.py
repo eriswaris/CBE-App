@@ -60,21 +60,21 @@ def main():
 
     if Tool_4 is not None:
         st.subheader('Tool 4 Dataset')
-        st.write(Tool_1)
+        st.write(Tool_4)
 
     if Tool_6 is not None:
         st.subheader('Tool 6 Dataset')
-        st.write(Tool_1)
+        st.write(Tool_6)
         
     if Tool_9 is not None:
         st.subheader('Tool 6 Dataset')
-        st.write(Tool_1)
+        st.write(Tool_9)
 
 if __name__ == '__main__':
     main()
 
 
-
+Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
 
 Tool_1['Tool_Name'] = "Tool 1"
 Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
