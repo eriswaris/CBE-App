@@ -115,40 +115,39 @@ if st.button('Start Processing the dataset'):
     update_qa_log()
 
     
-    if st.button('Update QA_Log'):
-        set_with_dataframe(sheet.worksheet(tab_name), Merge_datasets)
+   if st.button('Update QA_Log'):
+ sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'},{'values': Merge_datasets.astype(str).values.tolist()})
 
-        st.markdown(
-            """
-            <style>
-            @keyframes typing {
-                from { width: 0 }
-                to { width: 100% }
-            }
+ st.markdown(
+    """
+    <style>
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
 
-            @keyframes blink-caret {
-                from, to { border-color: transparent }
-                50% { border-color: #0099D8; }
-            }
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #0099D8; }
+    }
 
-            .typewriter-text {
-                overflow: hidden;
-                border-right: .15em solid #0099D8;
-                white-space: nowrap;
-                margin: 0 auto;
-                letter-spacing: .15em;
-                color: #0099D8;
-                animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-                font-size: 17px; /* Adjust the font size as desired */
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+    .typewriter-text {
+        overflow: hidden;
+        border-right: .15em solid #0099D8;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        color: #0099D8;
+        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        font-size: 17px; /* Adjust the font size as desired */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-        st.markdown("""
-            <h1 class="typewriter-text">Once you finish the update, Please take a look at the QA Log.</h1>
-            """,
-            unsafe_allow_html=True
-        )
-
+st.markdown("""
+    <h1 class="typewriter-text">Once you finish the update, Please take a look at the QA Log.</h1>
+    """,
+    unsafe_allow_html=True
+)
