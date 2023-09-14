@@ -1,2 +1,2 @@
-ppc = "ppc123"
-waris = "waris"
+username = "ppc123"
+passwords = "waris"
