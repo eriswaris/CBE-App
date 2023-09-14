@@ -1,2 +1,2 @@
-db_username = "ppc"
-db_pass = "waris"
+ppc = "ppc123"
+waris = "waris"
