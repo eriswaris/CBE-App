@@ -113,7 +113,7 @@ def Update():
 
     
     sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'}, {'values': Merge_datasets.astype(str).values.tolist()})
-
+    st.markdown('Updated!')
     st.markdown(
         """
         <style>
