@@ -74,79 +74,79 @@ if __name__ == '__main__':
     main()
 
 
-Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
+def Update():
 
-Tool_1['Tool_Name'] = "Tool 1"
-Tool_1 = Tool_1[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+    global Tool_1, Tool_4, Tool_6, Tool_9
+    Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
 
-Tool_4['Tool_Name'] = "Tool 4"
-Tool_4 = Tool_4[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+    Tool_1['Tool_Name'] = "Tool 1"
+    Tool_1 = Tool_1[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
-Tool_6['Tool_Name'] = "Tool 6"
-Tool_6 = Tool_6[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+    Tool_4['Tool_Name'] = "Tool 4"
+    Tool_4 = Tool_4[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
-Tool_9['Tool_Name'] = "Tool 9"
-Tool_9 = Tool_9[['KEY','Tool_Name','Province','District','Village','CBE_Name','CBE_Key','Surveyor_Name','Surveyor_Id']]
+    Tool_6['Tool_Name'] = "Tool 6"
+    Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
+    Tool_9['Tool_Name'] = "Tool 9"
+    Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
+    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6, Tool_9])
+    st.subheader('Merge All datasets')
+    st.write(Merge_datasets)
 
-Merge_datasets = pd.concat([Tool_1,Tool_4,Tool_6,Tool_9])
-st.subheader('Merge All datasets')
-st.write(Merge_datasets)
+    # Load data from Google sheet
+    sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
+    sheet_name = "QA_Log"
+    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
-# Load data from Google sheet
-sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
-sheet_name = "QA_Log"
-url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+    QA_log = pd.read_csv(url)
+    df_id = QA_log['KEY']
 
+    Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
+    st.subheader('Removing Duplicate KEY from the dataset')
+    st.write(Merge_datasets)
 
-QA_log = pd.read_csv(url)
-df_id = QA_log['KEY']
+    gc = gspread.service_account(filename='waris.json')
+    tab_name = 'QA_Log'
+    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
 
+    
+    sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'}, {'values': Merge_datasets.astype(str).values.tolist()})
 
-Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
-st.subheader('Removing Duplicate KEY from the dataset')
-st.write(Merge_datasets)
+    st.markdown(
+        """
+        <style>
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
 
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #0099D8; }
+        }
 
+        .typewriter-text {
+            overflow: hidden;
+            border-right: .15em solid #0099D8;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            color: #0099D8;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            font-size: 17px; /* Adjust the font size as desired */
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-gc = gspread.service_account(filename='waris.json')
-tab_name = 'QA_Log'
-sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
+    st.markdown("""
+        <h1 class="typewriter-text">Once you finish the update, Please take a look at the QA Log.</h1>
+        """,
+        unsafe_allow_html=True
+    )
 
-if st.button('Update QA_Log'):
- sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'},{'values': Merge_datasets.astype(str).values.tolist()})
-
- st.markdown(
-    """
-    <style>
-    @keyframes typing {
-        from { width: 0 }
-        to { width: 100% }
-    }
-
-    @keyframes blink-caret {
-        from, to { border-color: transparent }
-        50% { border-color: #0099D8; }
-    }
-
-    .typewriter-text {
-        overflow: hidden;
-        border-right: .15em solid #0099D8;
-        white-space: nowrap;
-        margin: 0 auto;
-        letter-spacing: .15em;
-        color: #0099D8;
-        animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-        font-size: 17px; /* Adjust the font size as desired */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-st.markdown("""
-    <h1 class="typewriter-text">Once you finish the update, Please take a look at the QA Log.</h1>
-    """,
-    unsafe_allow_html=True
-)
+if     st.button('Update QA Log'):
+    Update()
