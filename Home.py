@@ -102,5 +102,3 @@ if check_password():
  If you run into any technical problems or difficulties, feel free to contact Abdul Waris Amini, the Senior Data Officer at Premium Performance Consulting.
 '''
     st.markdown(multi)
-'''
-st.markdown(multi)
