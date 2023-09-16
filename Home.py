@@ -1,17 +1,30 @@
+
 import pandas as pd
 import streamlit as st
+import os
+from pathlib import Path
+import pickle
+import streamlit_authenticator as stauth
+
+st.set_page_config(
+    page_title="Multipage APP",
+    page_icon=("Boom")
+)
+
 
 
 st.set_page_config(
     page_title="UNICEF-CBE",
     page_icon=("Boom")
 )
-st.subheader('UNICEF CBE Project - ACT & PPC', divider='rainbow')
-
-    st.markdown('<h1 class="animate__animated animate__fadeInDown">Hello!</h1>', unsafe_allow_html=True)
 
 
-    st.markdown(
+
+
+st.markdown('<h1 class="animate__animated animate__fadeInDown">Hello!</h1>', unsafe_allow_html=True)
+
+
+st.markdown(
     """
     <style>
     .unicef-text {
@@ -23,7 +36,7 @@ st.subheader('UNICEF CBE Project - ACT & PPC', divider='rainbow')
 )
 
 
-    st.markdown(
+st.markdown(
     """
     <style>
     @keyframes typing {
@@ -51,14 +64,15 @@ st.subheader('UNICEF CBE Project - ACT & PPC', divider='rainbow')
     unsafe_allow_html=True
 )
 
-    st.markdown("""
+st.markdown("""
     <h1 class="typewriter-text">The purpose of this webApp is to maintain high-quality data.</h1>
     """,
     unsafe_allow_html=True
 )
 
 
-    multi = '''
+multi = '''
  If you run into any technical problems or difficulties, feel free to contact Abdul Waris Amini, the Senior Data Officer at Premium Performance Consulting.
 '''
-    st.markdown(multi)
+st.markdown(multi)
+
