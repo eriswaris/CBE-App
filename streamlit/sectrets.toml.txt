@@ -1,2 +1,0 @@
-username = "ppc123"
-passwords = "waris"
