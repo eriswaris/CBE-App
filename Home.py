@@ -3,11 +3,6 @@ import pandas as pd
 import streamlit as st
 import os
 
-st.set_page_config(
-    page_title="Multipage APP",
-    page_icon=("Boom")
-)
-
 
 
 st.set_page_config(
