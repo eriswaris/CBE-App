@@ -1,10 +1,7 @@
 
 import pandas as pd
 import streamlit as st
-import os
-from pathlib import Path
-import pickle
-import streamlit_authenticator as stauth
+
 
 st.set_page_config(
     page_title="Multipage APP",
