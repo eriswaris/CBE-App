@@ -114,6 +114,7 @@ def Update():
 
     QA_log = pd.read_csv(url)
     df_id = QA_log['KEY']
+    st.write(df_id )
 
     Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
     st.subheader('Removing Duplicate KEY from the dataset')
