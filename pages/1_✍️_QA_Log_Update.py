@@ -22,9 +22,10 @@ Tool_1 = None
 Tool_4 = None
 Tool_6 = None
 Tool_9 = None
+Tool_8 = None
 
 def process_datasets(files):
-    global Tool_1, Tool_4, Tool_6, Tool_9
+    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8 = None
 
     for file in files:
         file_name = file.name
@@ -36,6 +37,9 @@ def process_datasets(files):
             Tool_4 = pd.read_excel(file)
         elif dataset_name == 'Tool 6 Phase 2 School Community ParticipationRole':
             Tool_6 = pd.read_excel(file)
+        elif dataset_name == 'Tool 8 HUB School Teacher KII':
+            Tool_8 = pd.read_excel(file)    
+        
         elif dataset_name == 'Tool 9 Fomal School Checklist':
             Tool_9 = pd.read_excel(file)    
         else:
@@ -65,6 +69,10 @@ def main():
     if Tool_6 is not None:
         st.subheader('Tool 6 Dataset')
         st.write(Tool_6)
+
+    if Tool_8 is not None:
+        st.subheader('Tool 8 Dataset')
+        st.write(Tool_8)
         
     if Tool_9 is not None:
         st.subheader('Tool 9 Dataset')
@@ -76,8 +84,9 @@ if __name__ == '__main__':
 
 def Update():
 
-    global Tool_1, Tool_4, Tool_6, Tool_9
+    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8
     Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
+    Tool_8 = Tool_8.rename(columns={"School_Name_Type": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
 
     Tool_1['Tool_Name'] = "Tool 1"
     Tool_1 = Tool_1[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
@@ -88,8 +97,11 @@ def Update():
     Tool_6['Tool_Name'] = "Tool 6"
     Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
-    Tool_9['Tool_Name'] = "Tool 9"
-    Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_6['Tool_Name'] = "Tool 6"
+    Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+
+    Tool_8['Tool_Name'] = "Tool 8"
+    Tool_8 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
     Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6, Tool_9])
     st.subheader('Merge All datasets')
