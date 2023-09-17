@@ -112,10 +112,8 @@ def Update():
     sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
     sheet_name = "QA_Log"
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
-
+    
     QA_log = pd.read_csv(url)
-
-    # Access the 'KEY' column
     key_column = QA_log['KEY']
 
     Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(key_column)]
