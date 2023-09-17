@@ -25,7 +25,7 @@ Tool_9 = None
 Tool_8 = None
 
 def process_datasets(files):
-    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8 = None
+    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8
 
     for file in files:
         file_name = file.name
