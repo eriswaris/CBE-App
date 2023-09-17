@@ -112,18 +112,13 @@ def Update():
     tab_name = 'QA_Log'
     sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
 
-    sheet = pd.read_csv(url)
+    sheet = pd.read_csv(sheet)
     df_id = sheet['KEY']
 
     Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
     st.subheader('Removing Duplicate KEY from the dataset')
     st.write(Merge_datasets)
 
-    gc = gspread.service_account(filename='waris.json')
-    tab_name = 'QA_Log'
-    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
-
-    
     sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'}, {'values': Merge_datasets.astype(str).values.tolist()})
     st.markdown('Updated!')
     st.markdown(
