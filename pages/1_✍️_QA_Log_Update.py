@@ -85,23 +85,23 @@ if __name__ == '__main__':
 def Update():
 
     global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8
-    Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "EMIS_School_ID": "CBE_Key"})
-    Tool_8 = Tool_8.rename(columns={"School_Name_Type": "CBE_Name", "EMIS_School_ID": "CBE_Key","Village_Town_Name": "Village"})
+    Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "TPM_School_ID": "TPM_CBE_ID"})
+    Tool_8 = Tool_8.rename(columns={"School_Name_Type": "CBE_Name", "TPM_School_ID": "TPM_CBE_ID","Village_Town_Name": "Village"})
 
     Tool_1['Tool_Name'] = "Tool 1"
-    Tool_1 = Tool_1[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_1 = Tool_1[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_4['Tool_Name'] = "Tool 4"
-    Tool_4 = Tool_4[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_4 = Tool_4[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_6['Tool_Name'] = "Tool 6"
-    Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_9['Tool_Name'] = "Tool 9"
-    Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_8['Tool_Name'] = "Tool 8"
-    Tool_8 = Tool_8[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
+    Tool_8 = Tool_8[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6,Tool_8, Tool_9])
     st.subheader('Merge All datasets')
