@@ -103,7 +103,7 @@ def Update():
     Tool_8['Tool_Name'] = "Tool 8"
     Tool_8 = Tool_8[['KEY', 'Tool_Name', 'Province', 'District', 'Village_Town_Name', 'CBE_Name', 'CBE_Key', 'Surveyor_Name', 'Surveyor_Id']]
 
-    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6, Tool_9])
+    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6,Tool_8, Tool_9])
     st.subheader('Merge All datasets')
     st.write(Merge_datasets)
 
