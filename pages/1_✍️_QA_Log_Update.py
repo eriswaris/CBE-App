@@ -108,13 +108,12 @@ def Update():
     st.write(Merge_datasets)
 
     # Load data from Google sheet
-    sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
-    sheet_name = "QA_Log"
-    url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
+     gc = gspread.service_account(filename='waris.json')
+    tab_name = 'QA_Log'
+    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
 
-    QA_log = pd.read_csv(url)
-    df_id = QA_log['KEY']
-    st.write(df_id )
+    sheet = pd.read_csv(url)
+    df_id = sheet['KEY']
 
     Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
     st.subheader('Removing Duplicate KEY from the dataset')
