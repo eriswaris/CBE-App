@@ -113,7 +113,7 @@ def Update():
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
 
     QA_log = pd.read_csv(url)
-    df_id = QA_log['KEY']
+    df_id = QA_log['key']
 
     Merge_datasets = Merge_datasets[~Merge_datasets.KEY.isin(df_id)]
     st.subheader('Removing Duplicate KEY from the dataset')
