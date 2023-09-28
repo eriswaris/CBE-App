@@ -548,7 +548,7 @@ def Tool_1_fun():
 
 
 
-            Students_picture_QA = (
+        Students_picture_QA = (
              
             ((df['Students_picture'].notnull()) & (~df['Students_picture_QA'].isin(['Blur/Not Visible Photo', 'Relevant Photo', 'Irrelevant Photo'])))    
         
@@ -627,7 +627,7 @@ def Tool_1_fun():
         Reason_Absenteeism_Translation = df['Reason_Absenteeism'].notnull() & df['Reason_Absenteeism_Translation'].astype(str).str.contains('-', regex=True, na=False)
         if Reason_Absenteeism_Translation.any():
             error_keys.extend(df.loc[Reason_Absenteeism_Translation, 'KEY'])
-            error_questions.extend(['Reason_Absenteeism_Translation'] * Reason_Absenteeism_Translation.sum())
+            error_questions.extend(['Reason_Absenteeism'] * Reason_Absenteeism_Translation.sum())
             error_messages.extend(['Translation Missing'] * Reason_Absenteeism_Translation.sum())
             error_qa_status.extend(df.loc[Reason_Absenteeism_Translation, 'QA_status' ])
             error_qa_by.extend(df.loc[Reason_Absenteeism_Translation,'QA_By'])
@@ -653,7 +653,7 @@ def Tool_1_fun():
 
 
 
-            Picture2_QA = (
+        Picture2_QA = (
              
             ((df['Picture2'].notnull()) & (~df['Picture2_QA'].isin(['Blur/Not Visible Photo', 'Relevant Photo', 'Irrelevant Photo'])))    
         
@@ -2037,6 +2037,8 @@ def Tool_1_fun():
 
 
 
+
+        
         QA_Status_error = df['QA_By'].notnull() & df['QA_status'].isnull()
         if QA_Status_error.any():
             error_keys.extend(df.loc[QA_Status_error, 'KEY'])
@@ -2044,6 +2046,23 @@ def Tool_1_fun():
             error_messages.extend(['QA_Status is blank'] * QA_Status_error.sum())
             error_qa_status.extend(df.loc[QA_Status_error,'QA_status'])
             error_qa_by.extend(df.loc[QA_Status_error,'QA_By'])
+
+
+
+        QA_BY_error = df['QA_status'].notnull() & df['QA_By'].isnull()
+        if QA_BY_error.any():
+            error_keys.extend(df.loc[QA_BY_error, 'KEY'])
+            error_questions.extend(['QA_By'] * QA_BY_error.sum())
+            error_messages.extend(['QA_By is blank'] * QA_BY_error.sum())
+            error_qa_status.extend(df.loc[QA_BY_error,'QA_status'])
+            error_qa_by.extend(df.loc[QA_BY_error,'QA_By'])
+
+
+
+
+
+
+        
 
 
 
