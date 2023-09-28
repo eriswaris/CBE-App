@@ -627,7 +627,7 @@ def Tool_1_fun():
         Reason_Absenteeism_Translation = df['Reason_Absenteeism'].notnull() & df['Reason_Absenteeism_Translation'].astype(str).str.contains('-', regex=True, na=False)
         if Reason_Absenteeism_Translation.any():
             error_keys.extend(df.loc[Reason_Absenteeism_Translation, 'KEY'])
-            error_questions.extend(['Suggestions_For_Improvement_Translation'] * Reason_Absenteeism_Translation.sum())
+            error_questions.extend(['Reason_Absenteeism_Translation'] * Reason_Absenteeism_Translation.sum())
             error_messages.extend(['Translation Missing'] * Reason_Absenteeism_Translation.sum())
             error_qa_status.extend(df.loc[Reason_Absenteeism_Translation, 'QA_status' ])
             error_qa_by.extend(df.loc[Reason_Absenteeism_Translation,'QA_By'])
