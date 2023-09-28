@@ -605,7 +605,7 @@ def Tool_1_fun():
             error_questions.extend(['Attendance_Record'] * attendance_match_error.shape[0])
             error_messages.extend(['Attendance_Record Integer does not match with date and time'] * attendance_match_error.shape[0])
             error_qa_status.extend(attendance_match_error['QA_status'].tolist())
-            error_qa_by.extend(df.loc[attendance_match_error,'QA_By'])
+            error_qa_by.extend(attendance_match_error.loc[:, 'QA_By'].tolist())
 
 
 
@@ -1880,7 +1880,7 @@ def Tool_1_fun():
             error_questions.extend(['TPM_CBE_ID'] * TPM_CBE_ID.sum())
             error_messages.extend(['Duplicate CBE School'] * TPM_CBE_ID.sum())
             error_qa_status.extend(df.loc[TPM_CBE_ID, 'QA_status'])
-            error_qa_by.extend(df.loc[error_keys,'QA_By'])            
+            error_qa_by.extend(df.loc[TPM_CBE_ID,'QA_By'])            
 
         
 
