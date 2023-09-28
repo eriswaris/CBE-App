@@ -241,7 +241,7 @@ def Tool_4_fun():
             error_questions.extend(['TPM_CBE_ID'] * TPM_CBE_ID.sum())
             error_messages.extend(['Duplicate CBE School'] * TPM_CBE_ID.sum())
             error_qa_status.extend(df.loc[TPM_CBE_ID,'QA_status'])
-            error_qa_by.extend(df.loc[error_keys,'QA_By'])
+            error_qa_by.extend(df.loc[TPM_CBE_ID,'QA_By'])
 
 
 
@@ -332,7 +332,6 @@ def Tool_6_fun():
             error_questions.extend(['Consent_Informed'] * consent_informed_error.sum())
             error_messages.extend(['If Consent_Informed == 0, No_Consent_Reason should not be blank.'] * consent_informed_error.sum())
             error_qa_status.extend(df.loc[consent_informed_error, 'QA_status'])
-            consent_informed_error.extend(df.loc[no_consent_reason_error,'QA_By'])
             error_qa_by.extend(df.loc[consent_informed_error,'QA_By'])
 
 
@@ -417,7 +416,8 @@ def Tool_6_fun():
             error_keys.extend(df.loc[Suggestions_For_Improvement_error, 'KEY'])
             error_questions.extend(['Suggestions_For_Improvement_Translation'] * Suggestions_For_Improvement_error.sum())
             error_messages.extend(['Translation Missing'] * Suggestions_For_Improvement_error.sum())
-            error_qa_by.extend(df.loc[Suggestions_For_Improvement_error, 'QA_status' ])
+            error_qa_status.extend(df.loc[Suggestions_For_Improvement_error, 'QA_status'])
+            error_qa_by.extend(df.loc[Suggestions_For_Improvement_error, 'QA_By' ])
 
 
 
@@ -429,7 +429,7 @@ def Tool_6_fun():
             error_questions.extend(['TPM_CBE_ID'] * TPM_CBE_ID.sum())
             error_messages.extend(['Duplicate CBE School'] * TPM_CBE_ID.sum())
             error_qa_status.extend(df.loc[TPM_CBE_ID, 'QA_status'])
-            error_qa_by.extend(df.loc[TPM_CBE_ID, 'QA_status' ])            
+            error_qa_by.extend(df.loc[TPM_CBE_ID, 'QA_By' ])            
 
         
 
@@ -445,7 +445,7 @@ def Tool_6_fun():
             error_questions.extend(['QA_status'] * qa_status_spell.sum())
             error_messages.extend(['Incorrect spelling.'] * qa_status_spell.sum())
             error_qa_status.extend(df.loc[qa_status_spell,'QA_status'])
-            error_qa_by.extend(df.loc[qa_status_spell, 'QA_status' ])
+            error_qa_by.extend(df.loc[qa_status_spell, 'QA_By' ])
 
 
 
