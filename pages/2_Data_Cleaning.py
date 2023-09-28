@@ -150,9 +150,37 @@ def Tool_4_fun():
         if do_shura_meet_error.any():
             error_keys.extend(df.loc[do_shura_meet_error, 'KEY'])
             error_questions.extend(['Do_Shura_Meet_Regulary'] * do_shura_meet_error.sum())
-            error_messages.extend(['If Do_Shura_Meet_Regulary = 1, then How_Often_Do_You_Meet should not be blank and if Do_Shura_Meet_Regulary=0 How_Often_Do_You_Meet should be blank.'] * do_shura_meet_error.sum())
+            error_messages.extend(['Logic error.'] * do_shura_meet_error.sum())
             error_qa_status.extend(df.loc[do_shura_meet_error,'QA_status'])
             error_qa_by.extend(df.loc[do_shura_meet_error,'QA_By'])
+
+
+
+        Keep_Records = (
+            (df['Do_Shura_Meet_Regulary'] == 1) & (df['Keep_Records'].isnull()) | (df['Do_Shura_Meet_Regulary'] == 0 ) & (df['Keep_Records'].notnull())
+            
+        )
+        if Keep_Records.any():
+            error_keys.extend(df.loc[Keep_Records, 'KEY'])
+            error_questions.extend(['Keep_Records'] * Keep_Records.sum())
+            error_messages.extend(['Logic error.'] * Keep_Records.sum())
+            error_qa_status.extend(df.loc[Keep_Records,'QA_status'])
+            error_qa_by.extend(df.loc[Keep_Records,'QA_By'])
+
+
+
+        Main_Discussion = (
+            (df['Do_Shura_Meet_Regulary'] == 1) & (df['Main_Discussion'].isnull()) | (df['Do_Shura_Meet_Regulary'] == 0 ) & (df['Main_Discussion'].notnull())
+            
+        )
+        if Main_Discussion.any():
+            error_keys.extend(df.loc[Main_Discussion, 'KEY'])
+            error_questions.extend(['Main_Discussion'] * Main_Discussion.sum())
+            error_messages.extend(['Logic error.'] * Main_Discussion.sum())
+            error_qa_status.extend(df.loc[Main_Discussion,'QA_status'])
+            error_qa_by.extend(df.loc[Main_Discussion,'QA_By'])
+
+
 
 
 
