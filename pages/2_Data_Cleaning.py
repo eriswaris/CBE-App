@@ -914,7 +914,7 @@ def Tool_1_fun():
 
 
         Dropouts_Reason_Other_2 = (
-            (df['Dropouts_Reason'] != 8888) & 
+            (df['Dropouts_Reason'].isin([1,2,3,4,5,6,7])) & 
             df['Dropouts_Reason_Other'].notnull()
         )
         if Dropouts_Reason_Other_2.any():
