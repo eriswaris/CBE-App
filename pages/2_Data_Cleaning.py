@@ -749,9 +749,9 @@ def Tool_1_fun():
 
         Dropdown = (
             ((df['Education_Level_Learning_Space'].isin([2, 1])) & 
-            ((df['Total_Number_Students_Drouput'].isnull()) & 
-            (df['Total_Number_Students_Drouput_Boys'].isnull()) &
-            (df['Total_Number_Students_Drouput_Girls'].isnull())))
+            ((df['Total_Number_Students_Drouput'].notnull()) & 
+            (df['Total_Number_Students_Drouput_Boys'].notnull()) &
+            (df['Total_Number_Students_Drouput_Girls'].notnull())))
         )
 
 
@@ -766,9 +766,9 @@ def Tool_1_fun():
 
         Dropdown_2 = (
             ((df['Education_Level_Learning_Space'].isin([3, 4, 5, 6, 7, 8])) & 
-            ((df['Total_Number_Students_Drouput'].notnull()) & 
-            (df['Total_Number_Students_Drouput_Boys'].notnull()) &
-            (df['Total_Number_Students_Drouput_Girls'].notnull())))
+            ((df['Total_Number_Students_Drouput'].isnull()) & 
+            (df['Total_Number_Students_Drouput_Boys'].isnull()) &
+            (df['Total_Number_Students_Drouput_Girls'].isnull())))
         )
 
 
