@@ -2037,6 +2037,16 @@ def Tool_1_fun():
 
 
 
+        QA_Status_error = df['QA_By'].notnull() & df['QA_status'].isnull()
+        if QA_Status_error.any():
+            error_keys.extend(df.loc[QA_Status_error, 'KEY'])
+            error_questions.extend(['QA_Status'] * QA_Status_error.sum())
+            error_messages.extend(['QA_Status is blank'] * QA_Status_error.sum())
+            error_qa_status.extend(df.loc[QA_Status_error,'QA_status'])
+            error_qa_by.extend(df.loc[QA_Status_error,'QA_By'])
+
+
+
         # Create a DataFrame to store the error details
         Trans = pd.DataFrame({
             'KEY': error_keys,
