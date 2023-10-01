@@ -42,7 +42,7 @@ def process_datasets(files):
         dataset_name = file_name.split('.')[0]
 
         if dataset_name == 'Tool1-3 Phase 2 CBE CLASSROOM Observastion':
-            Tool_1 = pd.read_excel(file)
+            Tool_1 = pd.read_excel(file, sheet_name=None)
         elif dataset_name == 'Tool 4 Phase 2 Shura Member Checklist':
             Tool_4 = pd.read_excel(file)
         elif dataset_name == 'Tool 6 Phase 2 School Community ParticipationRole':
@@ -68,7 +68,7 @@ def main():
     # Example usage of the datasets
     if Tool_1 is not None:
         st.subheader('Tool 1 Dataset')
-        st.write(Tool_1)
+        
 
     if Tool_4 is not None:
         st.subheader('Tool 4 Dataset')
@@ -520,7 +520,9 @@ def Tool_1_fun():
         error_qa_status = []
         error_qa_by = []
 
-        df = Tool_1
+        sheet_name = "data"
+        if sheet_name in Tool_1:
+         df = Tool_1[sheet_name]
 
 
 
@@ -2086,11 +2088,51 @@ def Tool_1_fun():
             error_qa_by.extend(df.loc[QA_BY_error,'QA_By'])
 
 
+        
 
-
-
+        sheet_name = "Schools_CBE_Linked"
+        if sheet_name in Tool_1:
+         df_1 = Tool_1[sheet_name]
 
         
+
+        Which_School_CBE_Linked_To = (
+            (df_1['Which_School_CBE_Linked_To'].notnull()) & (df_1['TPM_School_ID_Linked'].isnull() | (df_1['TPM_School_ID_Linked'] == '-')) 
+        )
+
+        if Which_School_CBE_Linked_To.any():
+            error_keys.extend(df_1.loc[Which_School_CBE_Linked_To, 'PARENT_KEY'])
+            error_questions.extend(['Which_School_CBE_Linked_To'] * Which_School_CBE_Linked_To.sum())
+            error_messages.extend(['TPM_School_ID_Linked is blank'] * Which_School_CBE_Linked_To.sum())
+            error_qa_status.extend([None] * Which_School_CBE_Linked_To.sum())
+            error_qa_by.extend([None] * Which_School_CBE_Linked_To.sum())
+
+
+
+        Which_School_CBE_Linked_To_1= (
+            (df_1['Which_School_CBE_Linked_To'].notnull()) & (df_1['EMIS_School_ID_Linked'].isnull() | (df_1['EMIS_School_ID_Linked'] == '-')) 
+        )
+
+        if Which_School_CBE_Linked_To_1.any():
+            error_keys.extend(df_1.loc[Which_School_CBE_Linked_To_1, 'PARENT_KEY'])
+            error_questions.extend(['EMIS_School_ID_Linked'] * Which_School_CBE_Linked_To_1.sum())
+            error_messages.extend(['EMIS_School_ID_Linked is blank'] * Which_School_CBE_Linked_To_1.sum())
+            error_qa_status.extend([None] * Which_School_CBE_Linked_To_1.sum())
+            error_qa_by.extend([None] * Which_School_CBE_Linked_To_1.sum())
+
+
+
+
+        Which_School_CBE_Linked_To_Tran = df_1['Which_School_CBE_Linked_To'].astype(str).str.contains('[آ-ی]', regex=True, na=False)
+        if Which_School_CBE_Linked_To_Tran.any():
+                error_keys.extend(df_1.loc[Which_School_CBE_Linked_To_Tran, 'PARENT_KEY'])
+                error_questions.extend(['Which_School_CBE_Linked_To'] * Which_School_CBE_Linked_To_Tran.sum())
+                error_messages.extend(['Translation Missing'] * Which_School_CBE_Linked_To_Tran.sum())
+                error_qa_status.extend([None] * Which_School_CBE_Linked_To_Tran.sum())
+                error_qa_by.extend([None] * Which_School_CBE_Linked_To_Tran.sum())
+ 
+    
+
 
 
 
