@@ -285,8 +285,37 @@ def Tool_4_fun():
             error_messages.extend(['Incorrect spelling.'] * qa_status_spell.sum())
             error_qa_status.extend(df.loc[qa_status_spell,'QA_status'])
             error_qa_by.extend(df.loc[qa_status_spell,'QA_By'])
-       
 
+
+
+
+        
+
+        Type_SMS_Shura_label = (
+            (df['Type_SMS_Shura_label'] == "Male-only Shura") &
+            ((df['Total_Number_Of_Male_Members'] <= 0) | (df['Total_Number_Of_Female_Members'] > 0))
+        )
+
+        if Type_SMS_Shura_label.any():
+            error_keys.extend(df.loc[Type_SMS_Shura_label, 'KEY'])
+            error_questions.extend(['Type_SMS_Shura_label'] * Type_SMS_Shura_label.sum())
+            error_messages.extend(['Type_SMS_Shura_label Is Male only'] * Type_SMS_Shura_label.sum())
+            error_qa_status.extend(df.loc[Type_SMS_Shura_label, 'QA_status'])
+            error_qa_by.extend(df.loc[Type_SMS_Shura_label, 'QA_By'])
+
+
+
+        Type_SMS_Shura_label_1 = (
+            (df['Type_SMS_Shura_label'] == "Female-only Shura") &
+            ((df['Total_Number_Of_Female_Members'] <= 0) | (df['Total_Number_Of_Male_Members'] > 0))
+        )
+
+        if Type_SMS_Shura_label_1.any():
+            error_keys.extend(df.loc[Type_SMS_Shura_label_1, 'KEY'])
+            error_questions.extend(['Type_SMS_Shura_label'] * Type_SMS_Shura_label_1.sum())
+            error_messages.extend(['Type_SMS_Shura_label Is Female only'] * Type_SMS_Shura_label_1.sum())
+            error_qa_status.extend(df.loc[Type_SMS_Shura_label_1, 'QA_status'])
+            error_qa_by.extend(df.loc[Type_SMS_Shura_label_1, 'QA_By'])
 
 
 
