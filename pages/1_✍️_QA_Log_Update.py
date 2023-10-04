@@ -37,7 +37,7 @@ def process_datasets(files):
             Tool_4 = pd.read_excel(file)
         elif dataset_name == 'Tool 6 Phase 2 School Community ParticipationRole':
             Tool_6 = pd.read_excel(file)
-        elif dataset_name == 'Tool 8 HUB School Teacher KII':
+        elif dataset_name == 'Tool 8: HUB School Principal Interview':
             Tool_8 = pd.read_excel(file)    
         
         elif dataset_name == 'Tool 9 Fomal School Checklist':
