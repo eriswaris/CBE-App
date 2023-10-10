@@ -1184,7 +1184,7 @@ def Tool_1_fun():
 
 
         Teacher_Review_Homework_Put_Comments = (
-            ((df['Children_Used_their_Notebook_Regular_Basis'] != 0) & (df['Teacher_Review_Homework_Put_Comments'].isnull()))
+            ((df['Children_Used_their_Notebook_Regular_Basis'] == 1) & (df['Teacher_Review_Homework_Put_Comments'].isnull()))
              | ((df['Children_Used_their_Notebook_Regular_Basis'] == 0) & (df['Teacher_Review_Homework_Put_Comments'].notnull()))
         )
     
@@ -1194,6 +1194,20 @@ def Tool_1_fun():
             error_messages.extend(['Logic error.'] * Teacher_Review_Homework_Put_Comments.sum())
             error_qa_status.extend(df.loc[Teacher_Review_Homework_Put_Comments, 'QA_status'])
             error_qa_by.extend(df.loc[Teacher_Review_Homework_Put_Comments,'QA_By'])
+
+
+
+
+        Teacher_Review_Homework_Put_Comments_1 = (
+            ((df['Children_Used_their_Notebook_Regular_Basis'] == 2) & (df['Teacher_Review_Homework_Put_Comments'].isnull()))
+        )
+    
+        if Teacher_Review_Homework_Put_Comments_1.any():
+            error_keys.extend(df.loc[Teacher_Review_Homework_Put_Comments_1, 'KEY'])
+            error_questions.extend(['Teacher_Review_Homework_Put_Comments_1'] * Teacher_Review_Homework_Put_Comments_1.sum())
+            error_messages.extend(['Logic error.'] * Teacher_Review_Homework_Put_Comments_1.sum())
+            error_qa_status.extend(df.loc[Teacher_Review_Homework_Put_Comments_1, 'QA_status'])
+            error_qa_by.extend(df.loc[Teacher_Review_Homework_Put_Comments_1,'QA_By'])
 
 
 
