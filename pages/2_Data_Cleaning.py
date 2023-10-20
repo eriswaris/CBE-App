@@ -759,7 +759,7 @@ def Tool_1_fun():
         if condition.any():
             error_keys.extend(df.loc[condition, 'KEY'])
             error_questions.extend(['Absent_Registered_Students_Academic_Year_More_10_Days_Group'] * condition.sum())
-            error_messages.extend(['Logic error please check the code book.'] * condition.sum())
+            error_messages.extend(['Logic error please check the code book 1.'] * condition.sum())
             error_qa_status.extend(df.loc[condition, 'QA_status'])
             error_qa_by.extend(df.loc[condition,'QA_By'])
 
@@ -778,7 +778,7 @@ def Tool_1_fun():
         if condition_2.any():
             error_keys.extend(df.loc[condition_2, 'KEY'])
             error_questions.extend(['Absent_Registered_Students_Academic_Year_More_10_Days_Group'] * condition_2.sum())
-            error_messages.extend(['Logic error please check the code book.'] * condition_2.sum())
+            error_messages.extend(['Logic error please check the code book 2.'] * condition_2.sum())
             error_qa_status.extend(df.loc[condition_2, 'QA_status'])
             error_qa_by.extend(df.loc[condition_2,'QA_By'])
 
@@ -799,7 +799,7 @@ def Tool_1_fun():
         if condition_3.any():
             error_keys.extend(df.loc[condition_3, 'KEY'])
             error_questions.extend(['Absent_Registered_Students_Academic_Year_More_10_Days_Group'] * condition_3.sum())
-            error_messages.extend(['Logic error please check the code book.'] * condition_3.sum())
+            error_messages.extend(['Logic error please check the code book 3.'] * condition_3.sum())
             error_qa_status.extend(df.loc[condition_3, 'QA_status'])
             error_qa_by.extend(df.loc[condition_3,'QA_By'])
 
@@ -1515,7 +1515,7 @@ def Tool_1_fun():
 
 
         What_Complaintfeedback_Mechanism_Is_Available_Other = (
-            (df['No_Consent_Reason'] == 8888) & 
+            (df['What_Complaintfeedback_Mechanism_Is_Available_Other'] == 8888) & 
             df['What_Complaintfeedback_Mechanism_Is_Available_Other'].isnull()
         )
         if What_Complaintfeedback_Mechanism_Is_Available_Other.any():
