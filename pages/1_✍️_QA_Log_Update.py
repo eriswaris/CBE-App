@@ -40,7 +40,7 @@ def process_datasets(files):
         elif dataset_name == 'Tool 8 HUB School Principal Interview':
             Tool_8 = pd.read_excel(file)    
         
-        elif dataset_name == 'Tool 9 Fomal School Checklist':
+        elif dataset_name == 'Tool 9 Fomal School Checklist V2':
             Tool_9 = pd.read_excel(file)    
         else:
             st.warning(f"Dataset '{dataset_name}' does not match the expected datasets. Please Upload the correct dataset",icon="⚠️")
@@ -97,7 +97,7 @@ def Update():
     Tool_6['Tool_Name'] = "Tool 6"
     Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
-    Tool_9['Tool_Name'] = "Tool 9"
+    Tool_9['Tool_Name'] = "Tool 9 V2"
     Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_8['Tool_Name'] = "Tool 8"
