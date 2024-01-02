@@ -60,23 +60,23 @@ def main():
     # Example usage of the datasets
     if Tool_1 is not None:
         st.subheader('Tool 1 Dataset')
-        st.write(Tool_1)
+        
 
     if Tool_4 is not None:
         st.subheader('Tool 4 Dataset')
-        st.write(Tool_4)
+       
 
     if Tool_6 is not None:
         st.subheader('Tool 6 Dataset')
-        st.write(Tool_6)
+        
 
     if Tool_8 is not None:
         st.subheader('Tool 8 Dataset')
-        st.write(Tool_8)
+        
         
     if Tool_9 is not None:
         st.subheader('Tool 9 Dataset')
-        st.write(Tool_9)
+        
 
 if __name__ == '__main__':
     main()
