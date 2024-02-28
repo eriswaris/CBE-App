@@ -23,9 +23,11 @@ Tool_4 = None
 Tool_6 = None
 Tool_9 = None
 Tool_8 = None
+Tool_5 = None
+Tool_7 = None
 
 def process_datasets(files):
-    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8
+    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8, Tool_5, Tool_7
 
     for file in files:
         file_name = file.name
@@ -41,9 +43,16 @@ def process_datasets(files):
             Tool_8 = pd.read_excel(file)    
         
         elif dataset_name == 'Tool 9 Fomal School Checklist':
-            Tool_9 = pd.read_excel(file)    
+            Tool_9 = pd.read_excel(file)
+
+        elif dataset_name == 'Tool 5 Phase 2 GATE':
+            Tool_5 = pd.read_excel(file)
+
+        elif dataset_name == 'Tool 7 IP HQ Level':
+            Tool_7 = pd.read_excel(file)
+
         else:
-            st.warning(f"Dataset '{dataset_name}' does not match the expected datasets. Please Upload the correct dataset",icon="⚠️")
+            st.warning(f"Dataset '{dataset_name}' does not match the expected datasets. Please Upload the correct dataset",icon="??")
 
 
 # Main Streamlit app
@@ -64,7 +73,7 @@ def main():
 
     if Tool_4 is not None:
         st.subheader('Tool 4 Dataset')
-       
+        
 
     if Tool_6 is not None:
         st.subheader('Tool 6 Dataset')
@@ -78,15 +87,26 @@ def main():
         st.subheader('Tool 9 Dataset')
         
 
+    if Tool_5 is not None:
+        st.subheader('Tool 5 Dataset')
+        
+
+    if Tool_7 is not None:
+        st.subheader('Tool 7 Dataset')
+        
+
+
 if __name__ == '__main__':
     main()
 
 
 def Update():
 
-    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8
+    global Tool_1, Tool_4, Tool_6, Tool_9, Tool_8, Tool_5, Tool_7
     Tool_9 = Tool_9.rename(columns={"School_Name": "CBE_Name", "TPM_School_ID": "TPM_CBE_ID"})
     Tool_8 = Tool_8.rename(columns={"School_Name_Type": "CBE_Name", "TPM_School_ID": "TPM_CBE_ID","Village_Town_Name": "Village"})
+    Tool_5 = Tool_5.rename(columns={"Village_Town_Name": "Village"})
+    Tool_7 = Tool_7.rename(columns={"Village_Town_Name": "Village"})
 
     Tool_1['Tool_Name'] = "Tool 1"
     Tool_1 = Tool_1[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
@@ -97,19 +117,24 @@ def Update():
     Tool_6['Tool_Name'] = "Tool 6"
     Tool_6 = Tool_6[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
-    Tool_9['Tool_Name'] = "Tool 9 V2"
+    Tool_9['Tool_Name'] = "Tool 9"
     Tool_9 = Tool_9[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
     Tool_8['Tool_Name'] = "Tool 8"
     Tool_8 = Tool_8[['KEY', 'Tool_Name', 'Province', 'District', 'Village', 'CBE_Name', 'TPM_CBE_ID', 'Surveyor_Name', 'Surveyor_Id']]
 
-    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6,Tool_8, Tool_9])
+    Tool_5['Tool_Name'] = "Tool 5"
+    Tool_5 = Tool_5[['KEY', 'Tool_Name', 'Province', 'District']]
+
+    Tool_7['Tool_Name'] = "Tool 7"
+    Tool_7 = Tool_7 [['KEY', 'Tool_Name', 'Province', 'District', 'Village']]
+
+    Merge_datasets = pd.concat([Tool_1, Tool_4, Tool_6,Tool_8, Tool_9, Tool_7, Tool_5])
     st.subheader('Merge All datasets')
     st.write(Merge_datasets)
 
-    # Load data from Google sheet
     # Load data from Google Sheet
-    sheet_id = "1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg"
+    sheet_id = "4QpaYYb8YvXtaNjz81Xjt34m1PaHLNFU3oQxEXn9LZcY"
     sheet_name = "QA_Log"
     url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}"
     
@@ -122,7 +147,7 @@ def Update():
 
     gc = gspread.service_account(filename='waris.json')
     tab_name = 'QA_Log'
-    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/1UeqKgO4T3Gy9MqfB8qHfDFAHVoX7XD9cz82UP5CIjBg/edit#gid=1946290')
+    sheet = gc.open_by_url('https://docs.google.com/spreadsheets/d/4QpaYYb8YvXtaNjz81Xjt34m1PaHLNFU3oQxEXn9LZcY/edit#gid=1946290')
 
     sheet.values_append(tab_name, {'valueInputOption': 'USER_ENTERED'}, {'values': Merge_datasets.astype(str).values.tolist()})
     st.markdown('Updated!')
